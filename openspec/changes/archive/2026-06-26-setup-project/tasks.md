@@ -9,7 +9,7 @@
 ## 2. Estrutura e alias
 
 - [ ] 2.1 Criar pastas: `assets/ components/ui/ pages/ hooks/ services/ mocks/
-    context/ lib/ types/ routes/ styles/` e `tests/` na raiz
+  context/ lib/ types/ routes/ styles/` e `tests/` na raiz
 - [ ] 2.2 Configurar alias `@/` em `tsconfig.json` e `vite.config.ts`
 
 ## 3. Roteamento
