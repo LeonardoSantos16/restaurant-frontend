@@ -1,0 +1,42 @@
+[
+  {
+    "id": "1",
+    "name": "Picanha na Brasa",
+    "description": "Picanha grelhada na brasa com arroz, feijão e farofa.",
+    "price": 89.9,
+    "category": "Carnes",
+    "imageUrl": ""
+  },
+  {
+    "id": "2",
+    "name": "Frango à Parmegiana",
+    "description": "Filé de frango empanado com molho de tomate e queijo derretido.",
+    "price": 54.9,
+    "category": "Aves",
+    "imageUrl": ""
+  },
+  {
+    "id": "3",
+    "name": "Salmão Grelhado",
+    "description": "Filé de salmão grelhado com legumes ao vapor e limão siciliano.",
+    "price": 79.9,
+    "category": "Peixes",
+    "imageUrl": ""
+  },
+  {
+    "id": "4",
+    "name": "Risoto de Funghi",
+    "description": "Risoto cremoso com mix de cogumelos e parmesão.",
+    "price": 62.9,
+    "category": "Massas e Risotos",
+    "imageUrl": ""
+  },
+  {
+    "id": "5",
+    "name": "Pudim de Leite",
+    "description": "Pudim de leite condensado tradicional com calda de caramelo.",
+    "price": 22.9,
+    "category": "Sobremesas",
+    "imageUrl": ""
+  }
+]
