@@ -1,4 +1,9 @@
-import { createBrowserRouter, Outlet, NavLink } from 'react-router';
+import {
+  createBrowserRouter,
+  Outlet,
+  NavLink,
+  type RouteObject,
+} from 'react-router';
 import Home from '@/pages/Home';
 import Menu from '@/pages/Menu';
 import Cart from '@/pages/Cart';
@@ -24,6 +29,20 @@ function Layout() {
   );
 }
 
+// Sanity-check route for the design-system tokens (colors, type scale, spotlight).
+// Dev-only: excluded from production builds, never linked from navigation.
+const devRoutes: RouteObject[] = import.meta.env.DEV
+  ? [
+      {
+        path: 'design-tokens',
+        lazy: async () => {
+          const { default: Component } = await import('@/pages/DesignTokens');
+          return { Component };
+        },
+      },
+    ]
+  : [];
+
 export const router = createBrowserRouter([
   {
     path: '/',
@@ -34,6 +53,7 @@ export const router = createBrowserRouter([
       { path: 'carrinho', element: <Cart /> },
       { path: 'reservas', element: <Reservation /> },
       { path: 'sobre', element: <About /> },
+      ...devRoutes,
     ],
   },
 ]);

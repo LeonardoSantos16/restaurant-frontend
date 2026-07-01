@@ -1,14 +1,72 @@
+@import 'tailwindcss';
+
+/* Design tokens — see DESIGN.md. Never introduce a color/font outside this table. */
+@theme {
+  --color-basalt: #15140f;
+  --color-ivory: #f1ecdd;
+  --color-brass: #c49a4a;
+  --color-wine: #5b2430;
+  --color-stone: #8a8577;
+
+  --font-display: 'Fraunces', serif;
+  --font-body: 'Work Sans', sans-serif;
+  --font-mono: 'IBM Plex Mono', monospace;
+
+  --text-display-xl: 3.5rem;
+  --text-display-xl--letter-spacing: -0.01em;
+  --text-display-lg: 2.25rem;
+  --text-display-lg--letter-spacing: -0.01em;
+  --text-body-lg: 1.125rem;
+  --text-body-md: 1rem;
+  --text-body-sm: 0.875rem;
+  --text-mono-md: 1rem;
+}
+
 *,
 *::before,
 *::after {
   box-sizing: border-box;
 }
 
-body {
-  margin: 0;
-  font-family:
-    system-ui,
-    -apple-system,
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
+@layer base {
+  body {
+    @apply bg-basalt text-ivory font-body antialiased;
+    margin: 0;
+  }
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-brass);
+  outline-offset: 2px;
+}
+
+/* Signature spotlight entrance — the one orchestrated motion moment on a page. */
+@keyframes spotlight-in {
+  from {
+    opacity: 0;
+    transform: scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes spotlight-in-reduced {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.animate-spotlight-in {
+  animation: spotlight-in 600ms ease-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-spotlight-in {
+    animation-name: spotlight-in-reduced;
+  }
 }
