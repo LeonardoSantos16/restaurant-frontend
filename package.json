@@ -50,6 +50,7 @@
     "@fontsource/fraunces": "^5.2.9",
     "@fontsource/ibm-plex-mono": "^5.2.7",
     "@fontsource/work-sans": "^5.2.8",
+    "@tabler/icons-react": "^3.44.0",
     "@tailwindcss/vite": "^4.3.2",
     "@tanstack/react-query": "^5.101.1",
     "react": "^19.2.7",

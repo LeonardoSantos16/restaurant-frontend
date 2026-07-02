@@ -20,7 +20,7 @@ describe('useMenu', () => {
 
     await waitFor(() => expect(result.current.isSuccess).toBe(true));
 
-    expect(result.current.data).toHaveLength(5);
+    expect(result.current.data).toHaveLength(7);
     expect(result.current.data?.[0]).toMatchObject({
       id: expect.any(String),
       name: expect.any(String),

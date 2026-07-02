@@ -4,32 +4,40 @@
     "name": "Picanha na Brasa",
     "description": "Picanha grelhada na brasa com arroz, feijão e farofa.",
     "price": 89.9,
-    "category": "Carnes",
-    "imageUrl": ""
+    "category": "Principais",
+    "imageUrl": "/placeholder-dish.svg",
+    "featured": true,
+    "popularity": 98
   },
   {
     "id": "2",
     "name": "Frango à Parmegiana",
     "description": "Filé de frango empanado com molho de tomate e queijo derretido.",
     "price": 54.9,
-    "category": "Aves",
-    "imageUrl": ""
+    "category": "Principais",
+    "imageUrl": "",
+    "featured": false,
+    "popularity": 76
   },
   {
     "id": "3",
     "name": "Salmão Grelhado",
     "description": "Filé de salmão grelhado com legumes ao vapor e limão siciliano.",
     "price": 79.9,
-    "category": "Peixes",
-    "imageUrl": ""
+    "category": "Principais",
+    "imageUrl": "",
+    "featured": false,
+    "popularity": 54
   },
   {
     "id": "4",
     "name": "Risoto de Funghi",
     "description": "Risoto cremoso com mix de cogumelos e parmesão.",
     "price": 62.9,
-    "category": "Massas e Risotos",
-    "imageUrl": ""
+    "category": "Principais",
+    "imageUrl": "",
+    "featured": false,
+    "popularity": 61
   },
   {
     "id": "5",
@@ -37,6 +45,28 @@
     "description": "Pudim de leite condensado tradicional com calda de caramelo.",
     "price": 22.9,
     "category": "Sobremesas",
-    "imageUrl": ""
+    "imageUrl": "",
+    "featured": false,
+    "popularity": 88
+  },
+  {
+    "id": "6",
+    "name": "Bruschetta de Tomate",
+    "description": "Fatias de pão tostado com tomate, manjericão e azeite extravirgem.",
+    "price": 28.9,
+    "category": "Entradas",
+    "imageUrl": "",
+    "featured": false,
+    "popularity": 40
+  },
+  {
+    "id": "7",
+    "name": "Vinho Tinto Reserva",
+    "description": "Taça de vinho tinto reserva, corpo encorpado com notas de frutas vermelhas.",
+    "price": 32.0,
+    "category": "Vinhos",
+    "imageUrl": "",
+    "featured": false,
+    "popularity": 33
   }
 ]
