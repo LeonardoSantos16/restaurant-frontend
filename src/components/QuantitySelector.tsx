@@ -19,7 +19,7 @@ export function QuantitySelector({
   const atMin = value <= min;
 
   return (
-    <div className="flex items-center gap-4 text-stone">
+    <div className="flex items-center gap-4 text-stone h-12">
       <button
         type="button"
         onClick={() => onChange(value - 1)}
