@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="400" viewBox="0 0 400 400">
+  <defs>
+    <radialGradient id="room" cx="50%" cy="60%" r="65%">
+      <stop offset="0%" stop-color="#C49A4A" />
+      <stop offset="55%" stop-color="#5B2430" />
+      <stop offset="100%" stop-color="#15140F" />
+    </radialGradient>
+  </defs>
+  <rect width="400" height="400" fill="url(#room)" />
+</svg>

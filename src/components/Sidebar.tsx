@@ -3,7 +3,6 @@ import { NavLink } from 'react-router';
 import {
   IconHome,
   IconToolsKitchen2,
-  IconCategory,
   IconShoppingBag,
   IconCalendarEvent,
   IconInfoCircle,
@@ -19,7 +18,6 @@ interface NavItem {
 const NAV_ITEMS: NavItem[] = [
   { label: 'Início', to: '/', icon: IconHome },
   { label: 'Cardápio', to: '/cardapio', icon: IconToolsKitchen2 },
-  { label: 'Categorias', to: '/categorias', icon: IconCategory },
   { label: 'Carrinho', to: '/carrinho', icon: IconShoppingBag },
   { label: 'Reservas', to: '/reservas', icon: IconCalendarEvent },
   { label: 'Sobre', to: '/sobre', icon: IconInfoCircle },

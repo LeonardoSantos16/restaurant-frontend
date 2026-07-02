@@ -4,7 +4,6 @@ import Menu from '@/pages/Menu';
 import Cart from '@/pages/Cart';
 import Reservation from '@/pages/Reservation';
 import About from '@/pages/About';
-import Categories from '@/pages/Categories';
 import MenuItemDetail from '@/pages/MenuItemDetail';
 import { Sidebar, SIDEBAR_COLLAPSED_WIDTH } from '@/components/Sidebar';
 
@@ -41,7 +40,6 @@ export const router = createBrowserRouter([
       { index: true, element: <Home /> },
       { path: 'cardapio', element: <Menu /> },
       { path: 'cardapio/:id', element: <MenuItemDetail /> },
-      { path: 'categorias', element: <Categories /> },
       { path: 'carrinho', element: <Cart /> },
       { path: 'reservas', element: <Reservation /> },
       { path: 'sobre', element: <About /> },
