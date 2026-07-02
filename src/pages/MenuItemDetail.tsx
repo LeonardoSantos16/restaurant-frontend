@@ -10,12 +10,14 @@ import { MenuItemRow } from '@/components/MenuItemRow';
 import { QuantitySelector } from '@/components/QuantitySelector';
 import { Spotlight } from '@/components/Spotlight';
 import { useCart } from '@/context/CartContext';
+import { useCartDrawer } from '@/context/CartDrawerContext';
 
 export default function MenuItemDetail() {
   const { id = '' } = useParams();
   const { data: item, isLoading, isError } = useMenuItem(id);
   const { data: menu } = useMenu();
   const { add } = useCart();
+  const { notifyAdd } = useCartDrawer();
   const [quantity, setQuantity] = useState(1);
 
   if (isLoading) {
@@ -94,7 +96,10 @@ export default function MenuItemDetail() {
             <QuantitySelector value={quantity} onChange={setQuantity} />
             <button
               type="button"
-              onClick={() => add(item, quantity)}
+              onClick={() => {
+                add(item, quantity);
+                notifyAdd(item.name);
+              }}
               className="bg-brass px-6 py-3 text-body-md font-body text-basalt transition-opacity duration-150 hover:opacity-90"
             >
               Adicionar ao carrinho

@@ -71,6 +71,37 @@
   }
 }
 
+/* Cart drawer entrance — shorter and less ceremonious than the hero spotlight. */
+@keyframes drawer-in {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes drawer-in-reduced {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.animate-drawer-in {
+  animation: drawer-in 250ms ease-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-drawer-in {
+    animation-name: drawer-in-reduced;
+  }
+}
+
 /* Printed menu — ink on paper. Reinforces the "printed menu" concept in DESIGN.md. */
 @media print {
   body {

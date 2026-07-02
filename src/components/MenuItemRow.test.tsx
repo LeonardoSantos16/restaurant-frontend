@@ -4,6 +4,7 @@ import { MemoryRouter } from 'react-router';
 import { describe, expect, it } from 'vitest';
 import { MenuItemRow } from '@/components/MenuItemRow';
 import { CartProvider, useCart } from '@/context/CartContext';
+import { CartDrawerProvider } from '@/context/CartDrawerContext';
 import type { MenuItem } from '@/types/menu';
 
 const baseItem: MenuItem = {
@@ -28,8 +29,10 @@ function renderRow(item: MenuItem) {
   return render(
     <MemoryRouter>
       <CartProvider>
-        <MenuItemRow item={item} />
-        <CartCount />
+        <CartDrawerProvider>
+          <MenuItemRow item={item} />
+          <CartCount />
+        </CartDrawerProvider>
       </CartProvider>
     </MemoryRouter>,
   );

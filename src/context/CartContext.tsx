@@ -1,15 +1,24 @@
-import { createContext, useContext, useState, type ReactNode } from 'react';
+import {
+  createContext,
+  useContext,
+  useMemo,
+  useState,
+  type ReactNode,
+} from 'react';
 import type { MenuItem } from '@/types/menu';
 
-interface CartItem extends MenuItem {
+export interface CartItem extends MenuItem {
   quantity: number;
 }
 
 interface CartContextValue {
   items: CartItem[];
   add: (item: MenuItem, quantity?: number) => void;
-  remove: (id: string) => void;
+  updateQuantity: (id: string, quantity: number) => void;
+  removeItem: (id: string) => void;
+  clear: () => void;
   total: number;
+  itemCount: number;
 }
 
 const CartContext = createContext<CartContextValue | null>(null);
@@ -29,18 +38,43 @@ export function CartProvider({ children }: { children: ReactNode }) {
     });
   }
 
-  function remove(id: string) {
+  function updateQuantity(id: string, quantity: number) {
     setItems((prev) =>
-      prev
-        .map((i) => (i.id === id ? { ...i, quantity: i.quantity - 1 } : i))
-        .filter((i) => i.quantity > 0),
+      quantity <= 0
+        ? prev.filter((i) => i.id !== id)
+        : prev.map((i) => (i.id === id ? { ...i, quantity } : i)),
     );
   }
 
-  const total = items.reduce((sum, i) => sum + i.price * i.quantity, 0);
+  function removeItem(id: string) {
+    setItems((prev) => prev.filter((i) => i.id !== id));
+  }
+
+  function clear() {
+    setItems([]);
+  }
+
+  const total = useMemo(
+    () => items.reduce((sum, i) => sum + i.price * i.quantity, 0),
+    [items],
+  );
+  const itemCount = useMemo(
+    () => items.reduce((sum, i) => sum + i.quantity, 0),
+    [items],
+  );
 
   return (
-    <CartContext.Provider value={{ items, add, remove, total }}>
+    <CartContext.Provider
+      value={{
+        items,
+        add,
+        updateQuantity,
+        removeItem,
+        clear,
+        total,
+        itemCount,
+      }}
+    >
       {children}
     </CartContext.Provider>
   );

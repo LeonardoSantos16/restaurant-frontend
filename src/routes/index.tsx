@@ -5,16 +5,24 @@ import Cart from '@/pages/Cart';
 import Reservation from '@/pages/Reservation';
 import About from '@/pages/About';
 import MenuItemDetail from '@/pages/MenuItemDetail';
+import { CartDrawer } from '@/components/CartDrawer';
+import { LiveRegion } from '@/components/LiveRegion';
 import { Sidebar, SIDEBAR_COLLAPSED_WIDTH } from '@/components/Sidebar';
+import { CartDrawerProvider } from '@/context/CartDrawerContext';
 
+// CartDrawerProvider reads the current route (to close the drawer on
+// navigation), so it must live inside the router tree rather than wrapping
+// RouterProvider in main.tsx.
 function Layout() {
   return (
-    <>
+    <CartDrawerProvider>
       <Sidebar />
       <main style={{ marginLeft: SIDEBAR_COLLAPSED_WIDTH }}>
         <Outlet />
       </main>
-    </>
+      <CartDrawer />
+      <LiveRegion />
+    </CartDrawerProvider>
   );
 }
 

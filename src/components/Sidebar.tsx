@@ -8,6 +8,7 @@ import {
   IconInfoCircle,
   type TablerIcon,
 } from '@tabler/icons-react';
+import { useCart } from '@/context/CartContext';
 
 interface NavItem {
   label: string;
@@ -28,6 +29,7 @@ export const SIDEBAR_EXPANDED_WIDTH = 180;
 
 export function Sidebar() {
   const [expanded, setExpanded] = useState(false);
+  const { itemCount } = useCart();
 
   return (
     <nav
@@ -38,29 +40,47 @@ export function Sidebar() {
         width: expanded ? SIDEBAR_EXPANDED_WIDTH : SIDEBAR_COLLAPSED_WIDTH,
       }}
     >
-      {NAV_ITEMS.map(({ label, to, icon: Icon }) => (
-        <NavLink
-          key={to}
-          to={to}
-          end={to === '/'}
-          className={({ isActive }) =>
-            `flex items-center gap-3 px-5 py-3 text-body-sm font-body transition-colors duration-150 ${
-              isActive
-                ? 'text-brass bg-brass/10'
-                : 'text-stone hover:text-ivory'
-            }`
-          }
-        >
-          <Icon size={22} stroke={1.5} className="shrink-0" aria-hidden />
-          <span
-            className={`whitespace-nowrap transition-opacity duration-150 ${
-              expanded ? 'opacity-100' : 'opacity-0'
-            }`}
+      {NAV_ITEMS.map(({ label, to, icon: Icon }) => {
+        const isCart = to === '/carrinho';
+        return (
+          <NavLink
+            key={to}
+            to={to}
+            end={to === '/'}
+            aria-label={
+              isCart && itemCount > 0
+                ? `${label}, ${itemCount} itens`
+                : undefined
+            }
+            className={({ isActive }) =>
+              `flex items-center gap-3 px-5 py-3 text-body-sm font-body transition-colors duration-150 ${
+                isActive
+                  ? 'text-brass bg-brass/10'
+                  : 'text-stone hover:text-ivory'
+              }`
+            }
           >
-            {label}
-          </span>
-        </NavLink>
-      ))}
+            <span className="relative shrink-0">
+              <Icon size={22} stroke={1.5} aria-hidden />
+              {isCart && itemCount > 0 && (
+                <span
+                  aria-hidden
+                  className="absolute -top-2 -right-3 text-body-sm font-mono text-brass"
+                >
+                  {itemCount}
+                </span>
+              )}
+            </span>
+            <span
+              className={`whitespace-nowrap transition-opacity duration-150 ${
+                expanded ? 'opacity-100' : 'opacity-0'
+              }`}
+            >
+              {label}
+            </span>
+          </NavLink>
+        );
+      })}
     </nav>
   );
 }

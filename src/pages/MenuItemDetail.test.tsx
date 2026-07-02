@@ -3,6 +3,7 @@ import userEvent from '@testing-library/user-event';
 import { MemoryRouter, Route, Routes } from 'react-router';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { CartProvider, useCart } from '@/context/CartContext';
+import { CartDrawerProvider } from '@/context/CartDrawerContext';
 import MenuItemDetail from '@/pages/MenuItemDetail';
 import type { MenuItem } from '@/types/menu';
 
@@ -45,10 +46,12 @@ function renderDetail() {
   return render(
     <MemoryRouter initialEntries={['/cardapio/1']}>
       <CartProvider>
-        <Routes>
-          <Route path="/cardapio/:id" element={<MenuItemDetail />} />
-        </Routes>
-        <CartTotal />
+        <CartDrawerProvider>
+          <Routes>
+            <Route path="/cardapio/:id" element={<MenuItemDetail />} />
+          </Routes>
+          <CartTotal />
+        </CartDrawerProvider>
       </CartProvider>
     </MemoryRouter>,
   );
