@@ -7,7 +7,7 @@ interface CartItem extends MenuItem {
 
 interface CartContextValue {
   items: CartItem[];
-  add: (item: MenuItem) => void;
+  add: (item: MenuItem, quantity?: number) => void;
   remove: (id: string) => void;
   total: number;
 }
@@ -17,15 +17,15 @@ const CartContext = createContext<CartContextValue | null>(null);
 export function CartProvider({ children }: { children: ReactNode }) {
   const [items, setItems] = useState<CartItem[]>([]);
 
-  function add(item: MenuItem) {
+  function add(item: MenuItem, quantity = 1) {
     setItems((prev) => {
       const existing = prev.find((i) => i.id === item.id);
       if (existing) {
         return prev.map((i) =>
-          i.id === item.id ? { ...i, quantity: i.quantity + 1 } : i,
+          i.id === item.id ? { ...i, quantity: i.quantity + quantity } : i,
         );
       }
-      return [...prev, { ...item, quantity: 1 }];
+      return [...prev, { ...item, quantity }];
     });
   }
 
