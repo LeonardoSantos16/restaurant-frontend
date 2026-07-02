@@ -35,7 +35,7 @@ export function Sidebar() {
     <nav
       onMouseEnter={() => setExpanded(true)}
       onMouseLeave={() => setExpanded(false)}
-      className="fixed inset-y-0 left-0 z-10 flex flex-col gap-1 overflow-hidden bg-basalt py-6 transition-[width] duration-300 ease-[cubic-bezier(0.25,1,0.5,1)]"
+      className="fixed inset-y-0 left-0 z-10 flex flex-col gap-1 overflow-hidden bg-basalt py-6 transition-[width] duration-300 ease-[cubic-bezier(0.25,1,0.5,1)] print:hidden"
       style={{
         width: expanded ? SIDEBAR_EXPANDED_WIDTH : SIDEBAR_COLLAPSED_WIDTH,
       }}

@@ -1,11 +1,10 @@
 import { useState } from 'react';
-import { Link } from 'react-router';
 import { useFeaturedDish, usePopularDishes } from '@/hooks/useMenu';
 import { useMenuSearch } from '@/hooks/useMenuSearch';
 import { FeaturedDish } from '@/components/FeaturedDish';
 import { CategoryGrid } from '@/components/CategoryGrid';
 import { PopularDishCard } from '@/components/PopularDishCard';
-import { formatPrice } from '@/lib/formatPrice';
+import { MenuItemRow } from '@/components/MenuItemRow';
 
 export default function Home() {
   const [query, setQuery] = useState('');
@@ -29,24 +28,10 @@ export default function Home() {
       {isSearching ? (
         <section>
           {results && results.length > 0 ? (
-            <ul className="space-y-4">
+            <ul className="space-y-6">
               {results.map((item) => (
                 <li key={item.id}>
-                  <Link
-                    to={`/cardapio/${item.id}`}
-                    className="group flex items-baseline gap-3 text-stone transition-colors duration-150 hover:text-ivory"
-                  >
-                    <span className="text-body-md font-body shrink-0">
-                      {item.name}
-                    </span>
-                    <span
-                      aria-hidden
-                      className="flex-1 -translate-y-[0.3em] border-b border-dotted border-stone/40 transition-colors duration-150 group-hover:border-ivory/40"
-                    />
-                    <span className="text-mono-md font-mono text-brass shrink-0">
-                      {formatPrice(item.price)}
-                    </span>
-                  </Link>
+                  <MenuItemRow item={item} />
                 </li>
               ))}
             </ul>

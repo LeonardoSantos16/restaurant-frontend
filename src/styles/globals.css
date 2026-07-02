@@ -70,3 +70,15 @@
     animation-name: spotlight-in-reduced;
   }
 }
+
+/* Printed menu — ink on paper. Reinforces the "printed menu" concept in DESIGN.md. */
+@media print {
+  body {
+    background: #fff;
+    color: var(--color-basalt);
+  }
+
+  main {
+    margin-left: 0 !important;
+  }
+}

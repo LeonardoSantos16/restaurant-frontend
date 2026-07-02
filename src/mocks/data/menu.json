@@ -7,7 +7,8 @@
     "category": "Principais",
     "imageUrl": "/placeholder-dish.svg",
     "featured": true,
-    "popularity": 98
+    "popularity": 98,
+    "tags": ["sem-gluten"]
   },
   {
     "id": "2",
@@ -27,7 +28,9 @@
     "category": "Principais",
     "imageUrl": "",
     "featured": false,
-    "popularity": 54
+    "popularity": 54,
+    "tags": ["sem-gluten"],
+    "available": false
   },
   {
     "id": "4",
@@ -37,7 +40,8 @@
     "category": "Principais",
     "imageUrl": "",
     "featured": false,
-    "popularity": 61
+    "popularity": 61,
+    "tags": ["vegetariano", "sem-gluten"]
   },
   {
     "id": "5",
@@ -47,7 +51,8 @@
     "category": "Sobremesas",
     "imageUrl": "",
     "featured": false,
-    "popularity": 88
+    "popularity": 88,
+    "tags": ["vegetariano", "sem-gluten"]
   },
   {
     "id": "6",
@@ -57,7 +62,8 @@
     "category": "Entradas",
     "imageUrl": "",
     "featured": false,
-    "popularity": 40
+    "popularity": 40,
+    "tags": ["vegetariano", "vegano"]
   },
   {
     "id": "7",
@@ -67,6 +73,7 @@
     "category": "Vinhos",
     "imageUrl": "",
     "featured": false,
-    "popularity": 33
+    "popularity": 33,
+    "tags": ["vegano", "sem-gluten"]
   }
 ]

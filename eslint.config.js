@@ -9,7 +9,15 @@ import prettierConfig from 'eslint-config-prettier';
 
 /** @type {import('eslint').Linter.Config[]} */
 export default [
-  { ignores: ['dist', 'node_modules', 'public/mockServiceWorker.js'] },
+  {
+    ignores: [
+      'dist',
+      'node_modules',
+      'public/mockServiceWorker.js',
+      '.github/skills',
+      '.claude',
+    ],
+  },
   js.configs.recommended,
   // Node env for config files
   {
