@@ -6,7 +6,7 @@ processo: planejamento estruturado antes da implementação, design system
 autoral definido desde o início, e um fluxo de desenvolvimento assistido por
 IA guiado por especificação (Spec-Driven Development), não por "vibe coding".
 
-> Deploy ainda não publicado. Instruções de execução local abaixo.
+> **Demo:** _link da Vercel aqui_ · Instruções de execução local abaixo.
 
 ## Sobre o processo
 
@@ -19,18 +19,18 @@ este projeto foi conduzido em etapas deliberadas:
    evitando o padrão visual genérico comum em interfaces geradas por IA
    (fundo creme + serifa + terracota, ou dark mode + verde-ácido).
 2. **Especificação formal de cada funcionalidade (SDD com OpenSpec)** — cada
-   página/feature nasceu como uma *change* documentada (`proposal.md`,
+   página/feature nasceu como uma _change_ documentada (`proposal.md`,
    `design.md`, `tasks.md` e spec delta em formato EARS) antes de qualquer
    linha de código, revisada manualmente antes da implementação.
 3. **Implementação assistida via Claude Code**, seguindo as specs à risca,
-   com refinamento visual pontual via [Impeccable](https://github.com)
+   com refinamento visual pontual via [Impeccable](https://github.com/pbakaus/impeccable)
    (skill de polish/motion) em páginas selecionadas.
 
 O histórico completo de propostas e specs está versionado em `openspec/`.
 
 ## Stack
 
-- **React 18 + TypeScript**
+- **React 19 + TypeScript**
 - **Vite** — build e dev server
 - **Tailwind CSS** — estilização, com tokens de design customizados
 - **React Router v7** — roteamento (modo SPA)
@@ -42,20 +42,20 @@ O histórico completo de propostas e specs está versionado em `openspec/`.
 - **ESLint + Prettier + Husky + lint-staged + commitlint** — qualidade de
   código e Conventional Commits
 - **GitHub Actions** — CI rodando lint e testes em cada PR
-- **pnpm**, Node 24 LTS
+- **npm**, Node 24 LTS (versão fixada em `.nvmrc`)
 
 ## Design System
 
 Identidade visual autoral, documentada em [`DESIGN.md`](./DESIGN.md) e
 [`PRODUCT.md`](./PRODUCT.md):
 
-| Token   | Uso                                  |
-|---------|----------------------------------------|
-| `basalt`  `#15140F` | fundo principal |
-| `ivory`   `#F1ECDD` | texto principal |
-| `brass`   `#C49A4A` | accent único (CTAs, preços) |
-| `wine`    `#5B2430` | accent raro (destaques pontuais) |
-| `stone`   `#8A8577` | texto secundário, divisores |
+| Token              | Uso                              |
+| ------------------ | -------------------------------- |
+| `basalt` `#15140F` | fundo principal                  |
+| `ivory` `#F1ECDD`  | texto principal                  |
+| `brass` `#C49A4A`  | accent único (CTAs, preços)      |
+| `wine` `#5B2430`   | accent raro (destaques pontuais) |
+| `stone` `#8A8577`  | texto secundário, divisores      |
 
 - **Tipografia**: Fraunces (display) + Work Sans (corpo) + IBM Plex Mono
   (preços e números)
@@ -92,13 +92,14 @@ decisões deliberadas, registradas na spec `setup-project`.
 
 ## Páginas
 
-| Rota          | Página      | Destaques de implementação                        |
-|---------------|-------------|-------------------------------------------------------|
-| `/`           | Home        | Sidebar retrátil (expande no hover), busca em tempo real, prato em destaque com spotlight circular, categorias mais buscadas, cards de mais pedidos |
-| `/cardapio`   | Cardápio    | Listagem com filtro por categoria |
-| `/carrinho`   | Carrinho    | Gerenciamento de itens via Context API |
-| `/reservas`   | Reservas    | Formulário de reserva |
-| `/sobre`      | Sobre       | Conteúdo institucional |
+| Rota            | Página           | Destaques de implementação                                                                                                                          |
+| --------------- | ---------------- | --------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `/`             | Home             | Sidebar retrátil (expande no hover), busca em tempo real, prato em destaque com spotlight circular, categorias mais buscadas, cards de mais pedidos |
+| `/cardapio`     | Cardápio         | Listagem com filtro por categoria                                                                                                                   |
+| `/cardapio/:id` | Detalhe do prato | Página individual de cada prato, com adição ao carrinho                                                                                             |
+| `/carrinho`     | Carrinho         | Gerenciamento de itens via Context API                                                                                                              |
+| `/reservas`     | Reservas         | Formulário de reserva                                                                                                                               |
+| `/sobre`        | Sobre            | Conteúdo institucional                                                                                                                              |
 
 ## Camada de dados mockados
 
@@ -107,6 +108,11 @@ componentes. O MSW intercepta as chamadas HTTP como se fossem para uma API
 real, replicando o formato de resposta esperado da futura API em .NET —
 quando ela existir, apenas a URL base muda, sem alteração em componentes ou
 hooks.
+
+Como ainda não há API real, o MSW também roda no build de produção
+(`VITE_USE_MOCKS=true` em `.env.production`), para que a demo publicada
+funcione com os mesmos dados. Basta trocar a flag para `false` quando a API
+estiver no ar.
 
 ## Testes
 
@@ -117,13 +123,14 @@ submissão do formulário de reservas) — não cobertura ampla por padrão.
 ## Rodando localmente
 
 ```bash
-npm install
-npm dev
+npm install --legacy-peer-deps
+npm run dev
 ```
 
 ```bash
-npm lint     # ESLint
-npm test     # Vitest
+npm run lint      # ESLint
+npm test          # Vitest (modo watch)
+npm run test:run  # Vitest (execução única, como no CI)
 ```
 
 ## Processo de design assistido por IA
@@ -141,6 +148,6 @@ deliberadamente afastado de "vibe coding":
 
 ## Próximos passos
 
-- [ ] Deploy na Vercel
+- [x] Deploy na Vercel
 - [ ] Integração com API real em C#/.NET
 - [ ] Ampliar uso do Impeccable para as páginas restantes
