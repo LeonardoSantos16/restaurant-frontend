@@ -6,7 +6,7 @@ processo: planejamento estruturado antes da implementação, design system
 autoral definido desde o início, e um fluxo de desenvolvimento assistido por
 IA guiado por especificação (Spec-Driven Development), não por "vibe coding".
 
-> **Demo:** _link da Vercel aqui_ · Instruções de execução local abaixo.
+> **Demo:** [restaurant-frontend-smoky-sigma.vercel.app](https://restaurant-frontend-smoky-sigma.vercel.app/) · Instruções de execução local abaixo.
 
 ## Sobre o processo
 
