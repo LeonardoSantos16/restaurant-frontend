@@ -13,9 +13,12 @@ import '@fontsource/ibm-plex-mono/400.css';
 import '@/styles/globals.css';
 
 async function enableMocking() {
-  if (import.meta.env.DEV) {
+  if (import.meta.env.DEV || import.meta.env.VITE_USE_MOCKS === 'true') {
     const { worker } = await import('@/mocks/browser');
-    return worker.start({ onUnhandledRequest: 'bypass' });
+    return worker.start({
+      onUnhandledRequest: 'bypass',
+      quiet: import.meta.env.PROD,
+    });
   }
 }
 
